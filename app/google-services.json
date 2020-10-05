@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "958569079041",
+    "firebase_url": "https://zekchat-7701d.firebaseio.com",
+    "project_id": "zekchat-7701d",
+    "storage_bucket": "zekchat-7701d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958569079041:android:c3cff7ff4585c0fada3b00",
+        "android_client_info": {
+          "package_name": "com.example.zekchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958569079041-dh70an9gnsbilu1g3c2gqe47dtah5oap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2gTUYKrKC1YLaR5uOIKHU6BQ7YZLJiUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958569079041-dh70an9gnsbilu1g3c2gqe47dtah5oap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
