@@ -134,10 +134,10 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
 
         final String reportDate = df.format(today);
 
-        reference.child("Users").child(userId).child(otherId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child("Friends").child(userId).child(otherId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                reference.child("Users").child(otherId).child(userId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
+                reference.child("Friends").child(otherId).child(userId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){

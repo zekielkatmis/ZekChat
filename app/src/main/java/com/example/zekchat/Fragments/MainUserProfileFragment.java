@@ -55,7 +55,7 @@ public class MainUserProfileFragment extends Fragment {
     String imageUrl;
     EditText input_userName, input_education, input_birthday, input_about;
     CircleImageView profile_image;
-    Button profile_updateButton;
+    Button profile_updateButton, profile_getFriendsButton, profile_getRequestButton;
     View view;
 
     @Override
@@ -85,6 +85,9 @@ public class MainUserProfileFragment extends Fragment {
 
         profile_image = view.findViewById(R.id.profile_image);
         profile_updateButton = view.findViewById(R.id.profile_updateButton);
+        profile_getFriendsButton = view.findViewById(R.id.profile_getFriendsButton);
+        profile_getRequestButton = view.findViewById(R.id.profile_getRequestButton);
+
 
         profile_updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +100,22 @@ public class MainUserProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openGallery();
+            }
+        });
+
+        profile_getFriendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeFragment changeFragment = new ChangeFragment(getContext());
+                changeFragment.change(new FriendsFragment());
+            }
+        });
+
+        profile_getRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeFragment changeFragment = new ChangeFragment(getContext());
+                changeFragment.change(new NotificationFragment());
             }
         });
     }
