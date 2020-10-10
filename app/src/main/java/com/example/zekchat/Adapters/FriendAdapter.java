@@ -57,7 +57,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         userId = firebaseUser.getUid();
     }
 
-    // Define layout
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -65,12 +64,8 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-    // Setting to views
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        //holder.user_name.setText(userKeyList.get(position).toString());
-
-        //We can get user information from here.
         reference.child("Users").child(userKeyList.get(position)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,13 +83,11 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
         });
     }
 
-    // List size of Adapter
     @Override
     public int getItemCount() {
         return userKeyList.size();
     }
 
-    // Define of views.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView friendsText;
