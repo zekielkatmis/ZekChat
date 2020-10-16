@@ -24,6 +24,12 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_state_img"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5" />
             <TextView
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"

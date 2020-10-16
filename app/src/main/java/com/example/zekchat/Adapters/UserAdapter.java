@@ -61,9 +61,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Users users = snapshot.getValue(Users.class);
+                Boolean userState = Boolean.parseBoolean(snapshot.child("state").getValue().toString());
 
                 Picasso.get().load(users.getProfilePhoto()).into(holder.user_image);
                 holder.user_name.setText(users.getProfileUsername());
+
+                if (userState == true){
+                    holder.userStateImage.setImageResource(R.drawable.online_icon);
+                }
+                else {
+                    holder.userStateImage.setImageResource(R.drawable.offline_icon);
+                }
             }
 
             @Override
@@ -93,7 +101,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView user_name;
-        CircleImageView user_image;
+        CircleImageView user_image, userStateImage;
         LinearLayout userMainLayout;
 
         ViewHolder(View itemView) {
@@ -101,6 +109,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             user_name = itemView.findViewById(R.id.user_name);
             user_image = itemView.findViewById(R.id.user_image);
             userMainLayout = itemView.findViewById(R.id.user_main_layout);
+            userStateImage = itemView.findViewById(R.id.user_state_img);
+
         }
     }
 }
