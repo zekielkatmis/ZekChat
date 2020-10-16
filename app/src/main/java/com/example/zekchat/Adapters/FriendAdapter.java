@@ -5,18 +5,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.zekchat.Models.Users;
 import com.example.zekchat.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,10 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -71,6 +61,13 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userName = snapshot.child("profileUsername").getValue().toString();
                 String userImage = snapshot.child("profilePhoto").getValue().toString();
+                Boolean stateUser = Boolean.parseBoolean(snapshot.child("state").getValue().toString());
+                if (stateUser == true){
+                    holder.friendState.setImageResource(R.drawable.online_icon);
+                }
+                else {
+                    holder.friendState.setImageResource(R.drawable.offline_icon);
+                }
 
                 Picasso.get().load(userImage).into(holder.friendsImage);
                 holder.friendsText.setText(userName);
@@ -91,12 +88,13 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView friendsText;
-        CircleImageView friendsImage;
+        CircleImageView friendsImage,friendState;
 
         ViewHolder(View itemView) {
             super(itemView);
             friendsText = itemView.findViewById(R.id.friends_text);
             friendsImage = itemView.findViewById(R.id.friends_image);
+            friendState = itemView.findViewById(R.id.friends_state_img);
         }
     }
 }

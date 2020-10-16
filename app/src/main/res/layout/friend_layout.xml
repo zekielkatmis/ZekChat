@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_friend"
@@ -37,11 +37,10 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/friends_state_img"
                 android:layout_width="0dp"
-                android:layout_height="5dp"
+                android:layout_height="11dp"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:layout_weight="0.4"
-                android:background="@color/colorPrimary"/>
+                android:layout_weight="0.5" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
