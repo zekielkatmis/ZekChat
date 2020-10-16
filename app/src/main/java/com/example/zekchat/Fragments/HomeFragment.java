@@ -80,7 +80,9 @@ public class HomeFragment extends Fragment {
                         Users users = snapshot.getValue(Users.class);
 
                         if (!users.getProfileUsername().equals("null") && !snapshot.getKey().equals(firebaseUser.getUid())){
-                            userKeyList.add(snapshot.getKey());
+                            if (userKeyList.indexOf(snapshot.getKey()) == -1){
+                                userKeyList.add(snapshot.getKey());
+                            }
                             userAdapter.notifyDataSetChanged();
                         }
                     }

@@ -70,7 +70,9 @@ public class FriendsFragment extends Fragment {
         reference.child(firebaseUser.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                keyList.add(snapshot.getKey());
+                if (keyList.indexOf(snapshot.getKey()) == -1) {
+                    keyList.add(snapshot.getKey());
+                }
                 friendAdapter.notifyDataSetChanged();
             }
 

@@ -17,6 +17,8 @@ import com.example.zekchat.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        else {
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference reference = firebaseDatabase.getReference().child("Users");
+            reference.child(user.getUid()).child("state").setValue(true);
+        }
     }
 
     public void exit(){
@@ -97,5 +104,27 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Users");
+        reference.child(user.getUid()).child("state").setValue(false);
+    }
+
+    //ACTIVITY LIFE CYCLE
+    @Override
+    //if the application is put into the background
+    protected void onStop() {
+        super.onStop();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Users");
+        reference.child(user.getUid()).child("state").setValue(false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference().child("Users");
+        reference.child(user.getUid()).child("state").setValue(true);
+
     }
 }

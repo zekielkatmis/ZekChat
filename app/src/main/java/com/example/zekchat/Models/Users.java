@@ -2,16 +2,26 @@ package com.example.zekchat.Models;
 
 public class Users {
     private String profileAbout, profileBirthday, profileEducation, profilePhoto, profileUsername;
+    private Object state;
 
     public Users() {
     }
 
-    public Users(String profileAbout, String profileBirthday, String profileEducation, String profilePhoto, String profileUsername) {
+    public Users(String profileAbout, String profileBirthday, String profileEducation, String profilePhoto, String profileUsername, Object state) {
         this.profileAbout = profileAbout;
         this.profileBirthday = profileBirthday;
         this.profileEducation = profileEducation;
         this.profilePhoto = profilePhoto;
         this.profileUsername = profileUsername;
+        this.state = state;
+    }
+
+    public Object getState() {
+        return state;
+    }
+
+    public void setState(Object state) {
+        this.state = state;
     }
 
     public String getProfileAbout() {

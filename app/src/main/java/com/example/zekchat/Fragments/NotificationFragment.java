@@ -72,7 +72,9 @@ public class NotificationFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String control = snapshot.child("type").getValue().toString();
                 if (control.equals("getRequest")) {
-                    friendRequestKeyList.add(snapshot.getKey());
+                    if (friendRequestKeyList.indexOf(snapshot.getKey()) == -1){
+                        friendRequestKeyList.add(snapshot.getKey());
+                    }
                     friendRequestAdapter.notifyDataSetChanged();
                 }
             }
