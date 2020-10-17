@@ -1,5 +1,6 @@
 package com.example.zekchat.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zekchat.Activity.ChatActivity;
 import com.example.zekchat.Models.Users;
 import com.example.zekchat.R;
 import com.example.zekchat.Utils.ShowToastMessage;
@@ -188,6 +190,16 @@ public class OtherUserFragment extends Fragment {
                 else {
                     favProfile(userId, otherUserId);
                 }
+            }
+        });
+
+        otherUserMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                intent.putExtra("otherUserName", otherUserProfileName.getText().toString());
+                intent.putExtra("otherId", otherUserId);
+                startActivity(intent);
             }
         });
     }
