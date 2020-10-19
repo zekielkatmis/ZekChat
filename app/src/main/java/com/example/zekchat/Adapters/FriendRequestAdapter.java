@@ -17,6 +17,7 @@ import com.example.zekchat.Fragments.OtherUserFragment;
 import com.example.zekchat.Models.Users;
 import com.example.zekchat.R;
 import com.example.zekchat.Utils.ChangeFragment;
+import com.example.zekchat.Utils.GetDate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -128,16 +129,10 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
 
     private void acceptRequest(final String userId, final String otherId) {
 
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
-        Date today = Calendar.getInstance().getTime();
-
-        final String reportDate = df.format(today);
-
-        reference.child("Friends").child(userId).child(otherId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child("Friends").child(userId).child(otherId).child("date").setValue(GetDate.getDate()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                reference.child("Friends").child(otherId).child(userId).child("date").setValue(reportDate).addOnCompleteListener(new OnCompleteListener<Void>() {
+                reference.child("Friends").child(otherId).child(userId).child("date").setValue(GetDate.getDate()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
